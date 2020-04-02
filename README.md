@@ -1,2 +1,1 @@
-# C-NeuralNet
-# C-NeuralNet
+# C++-NeuralNet
