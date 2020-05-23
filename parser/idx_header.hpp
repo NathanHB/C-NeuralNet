@@ -1,6 +1,7 @@
 #ifndef IDX_HEADER_H
 #define IDX_HEADER_H
 #include <string_view>
+#include <vector>
 #include <iostream>
 
 struct Idx_header {
@@ -13,17 +14,18 @@ struct Idx_header {
 	// number of dims = 3
 	// dims = {10000, 28, 28}
 	// list of the dimensions
-	int32_t *dims;
+	std::vector<int32_t> dims;
 };
 
 class Idx_file {
 	// header of the file, kept in struct because easier to pass around
 	Idx_header hdr;
 	// where the actual data is kept without the header
-	unsigned char *data;
+	unsigned char *byte_stream;
+	std::vector<unsigned char> data;
 
 	// opens the idx file and reuturn the stream of bytes
-	static char *open_file(const char *);
+	static unsigned char *open_file(const char *);
 
 	// used by the constructor to parse the file given in parameter of the
 	// constructor
@@ -41,6 +43,7 @@ public:
 
 	//getters
 	Idx_header get_header() { return hdr; };
+	std::vector<unsigned char> get_data() { return data; };
 };
 
 #endif

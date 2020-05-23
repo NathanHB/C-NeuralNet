@@ -1,4 +1,3 @@
-
 CXX = g++
 CPPFLAGS =
 CXXFLAGS = -Wall -Wextra -Werror -std=c++17
